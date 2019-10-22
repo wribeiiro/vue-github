@@ -15,9 +15,9 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
+### Run your tests
 ```
-npm run lint
+npm run test
 ```
 
 ### Customize configuration
