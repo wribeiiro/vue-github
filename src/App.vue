@@ -3,9 +3,16 @@
         <Navbar/>
         <div class="container">
             <div class="card card-body">
-                <h1>Search in github</h1>
-                <p class="lead">Type something for searching</p>
-                <input id="search" type="text" class="form-control" required @keyup="getInfo" placeholder="Waiting for search..."/>
+                <h2 class="mb-2 text-center">Search in github</h2>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-custom">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+
+                    <input id="search" type="text" class="form-control" required @keyup="debounceSearch($event)" placeholder="Waiting for search (repositories, users...)"/>
+                </div>
             </div>
 
             <div class="row mt-3" v-if="users.length !== 0">
@@ -26,6 +33,7 @@ import Navbar from "./components/Navbar.vue";
 import ProfileUser from "./components/ProfileUser.vue";
 import RepositoriesUser from "./components/RepositoriesUser.vue";
 import axios from "axios";
+import _ from 'lodash';
 
 export default {
     name: 'app',
@@ -36,11 +44,15 @@ export default {
                 client_id: '0bbeff79fa0c5d3f9e01',
                 client_secret: '73699f371e3fb06074c17ad064f064d82d29443c',
                 per_page: 100,
-                sort: 'created:asc'
+                sort: 'created:asc',
+                debounceSearch: null
             },
             users: [],
             repositories: []
         }
+    },
+    created() {
+        this.debounceSearch = _.debounce(this.getInfo, 100);
     },
     components: {
         Navbar,
@@ -53,6 +65,8 @@ export default {
                 `${this.params.url}/${user}/repos?per_page=${this.params.per_page}&sort=${this.params.sort}&client_id=${this.params.client_id}&client_secret=${this.params.client_secret}`
             )
             .then(({data}) => {
+                //console.log(data) // eslint-disable-line no-console
+
                 this.repositories = data;
             })
             .catch(() => {
@@ -68,8 +82,8 @@ export default {
                 this.users = [];
             });
         },
-        getInfo(value) { 
-            const user = value.target.value;
+        getInfo($event) { 
+            const user = $event.target.value;
 
             if(user.length) {
                 this.getProfile(user);
@@ -83,4 +97,15 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+    .bg-custom {
+        background: #3FB984;
+        color: #fff;
+    }
+
+    input {
+        outline: none;
+        box-shadow:none !important;
+    }
+
+</style>
