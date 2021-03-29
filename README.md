@@ -5,7 +5,7 @@ Search github users and repositories using their own API and VueJS.
 ### Screenshots
 Some examples
 
-![gif](https://user-images.githubusercontent.com/20648572/112876695-7d03dd00-90ce-11eb-8d3e-0653d255ae95.gif)
+![gif](https://user-images.githubusercontent.com/20648572/112877424-67db7e00-90cf-11eb-9f43-b5c070a625b7.gif)
 
 ## Project setup
 ```sh
