@@ -65,8 +65,6 @@ export default {
                 `${this.params.url}/${user}/repos?per_page=${this.params.per_page}&sort=${this.params.sort}&client_id=${this.params.client_id}&client_secret=${this.params.client_secret}`
             )
             .then(({data}) => {
-                //console.log(data) // eslint-disable-line no-console
-
                 this.repositories = data;
             })
             .catch(() => {
@@ -84,22 +82,38 @@ export default {
         },
         getInfo($event) { 
             const user = $event.target.value;
+            
+            this.users        = [];
+            this.repositories = [];
 
-            if(user.length) {
+            if (user.length) {
                 this.getProfile(user);
                 this.getRepositories(user);
-            } else {
-                this.users        = [];
-                this.repositories = [];
-            }
+            } 
         }
     }
 }
 </script>
 
 <style>
+    body {
+        background: #121214;
+    }
+
+    .card {
+        background: #212025;
+        color: #fff;
+    }
+
+    #id:active, 
+    #id:focus {
+        box-shadow: none;
+        border: none;
+        outline: none;
+    }
+
     .bg-custom {
-        background: #3FB984;
+        background: #9466FF;
         color: #fff;
     }
 

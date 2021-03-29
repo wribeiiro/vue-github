@@ -30,16 +30,20 @@ export default {
 
 <style>
     .btn-custom {
-        background: #3FB984;
+        background: #9466FF;
         color: #fff;
     }
 
     .badge-custom {
-        background: #3FB984;
+        background: #9466FF;
         color: #fff;
     }
 
     .badge {
         margin-left: 8px;
+    }
+
+    a {
+        color: #9466FF;
     }
 </style>

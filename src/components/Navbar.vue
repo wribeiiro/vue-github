@@ -8,8 +8,8 @@
 
 <style>
     .navbar-custom {
-        background-color: #3FB984;
-        border-color: #3FB984;
+        background-color: #212025;
+        border-color: #212025;
     }
     
     .navbar-custom a {

@@ -24,13 +24,19 @@ export default {
 </script>
 
 <style>
+    .card,
+    .list-group,
+    .list-group-item {
+        background: #212025;
+    }
+
     .btn-custom {
-        background: #3FB984;
+        background: #9466FF !important;
         color: #fff;
     }
 
     .badge-custom {
-        background: #3FB984;
+        background: #9466FF;
         color: #fff;
     }
 </style>
